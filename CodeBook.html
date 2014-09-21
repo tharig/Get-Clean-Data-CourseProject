@@ -1,0 +1,351 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.0.1  (Unix)">
+	<META NAME="CREATED" CONTENT="20140921;12361400">
+	<META NAME="CHANGED" CONTENT="0;0">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 0.79in }
+		P { margin-bottom: 0.08in }
+		TD P { margin-bottom: 0in }
+		A:link { so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<P STYLE="margin-bottom: 0in">Code Book</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">for 'Getting and
+Cleaning Data', fall 2014, course project</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">The project
+requirements are found at (registration required): 
+</P>
+<P STYLE="margin-left: 0.98in; margin-bottom: 0in"><A HREF="https://class.coursera.org/getdata-007/human_grading/view/courses/972585/assessments/3/submissions"><FONT SIZE=2 STYLE="font-size: 9pt">https://class.coursera.org/getdata-007/human_grading/view/courses/972585/assessments/3/submissions</FONT></A></P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">A copy of the most
+pertinent points is in this file n the project working directory:</P>
+<P STYLE="margin-left: 0.98in; margin-bottom: 0in">DescriptionPage-andRubrics.txt
+</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">FILES (all paths are relative to the
+project working directory:</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">./UCI HAR Dataset</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<DL>
+	<DL>
+		<DD>
+		<TABLE WIDTH=655 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+			<COL WIDTH=266>
+			<COL WIDTH=372>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>activity_labels.txt</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>Relates integer activity code to text description of
+					activity.  6 rows x 2 columns</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>features_info.txt</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>Dataset documentation describing features.</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>features.txt</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>A listing of feature names corresponding to columns in the
+					'X_train.txt' and 'X_test.txt' files.  561 rows x 2 columns
+					(index and data)</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>README.txt</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>Dataset documentation describing the experiment.</P>
+				</TD>
+			</TR>
+		</TABLE>
+	</DL>
+</DL>
+<P STYLE="margin-left: 0.98in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">	./UCI HAR Dataset/test</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<DL>
+	<DL>
+		<DD>
+		<TABLE WIDTH=655 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+			<COL WIDTH=266>
+			<COL WIDTH=372>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>subject_test.txt</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>List of subjects.  <I>Assumption</I>: these rows align with
+					the data rows in 'X_test.txt'.  2947 rows x 1 column</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>X_test.txt</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>Table of data, 2947 rows  y 561 columns</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>y_test.txt</P>
+				</TD>
+				<TD WIDTH=372>
+					<P><I>Assumption</I><SPAN STYLE="font-style: normal">:  These
+					are the activity codes aligned with the subject and data tables.
+					 2947 rows x 1 column.</SPAN></P>
+				</TD>
+			</TR>
+		</TABLE>
+	</DL>
+</DL>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">	./UCI HAR Dataset/train</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<DL>
+	<DL>
+		<DD>
+		<TABLE WIDTH=655 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+			<COL WIDTH=266>
+			<COL WIDTH=372>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>subject_train.txt</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>List of subjects.  <I>Assumption</I>: these rows align with
+					the data rows in 'X_train.txt'.  7352 rows x 1 column</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>X_train.txt</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>Table of data, 7352 rows  y 561 columns</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>y_train.txt</P>
+				</TD>
+				<TD WIDTH=372>
+					<P><I>Assumption</I><SPAN STYLE="font-style: normal">:  These
+					are the activity codes aligned with the subject and data tables.
+					 7352 rows x 1 column.</SPAN></P>
+				</TD>
+			</TR>
+		</TABLE>
+	</DL>
+</DL>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">	./UCI HAR Dataset/test/Inertial
+Signals  and</P>
+<P STYLE="margin-bottom: 0in">	./UCI HAR Dataset/train/Inertial
+Signals</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.98in; margin-bottom: 0in">These are raw data
+sensor inputs.  They are not needed for this analysis.</P>
+<P STYLE="margin-left: 0.98in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">DATASETS</P>
+<P STYLE="margin-bottom: 0in">	See ReadMe.txt for information on the
+'Step's used in the analysis.</P>
+<P STYLE="margin-bottom: 0in">	</P>
+<P STYLE="margin-bottom: 0in">	Results:</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<DL>
+	<DL>
+		<DD>
+		<TABLE WIDTH=655 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+			<COL WIDTH=266>
+			<COL WIDTH=372>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>all_data</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>Results of analysis.  Gives the value for all data variables
+					(features). 10299 rows x 89 columns.  Columns are named for each
+					variable.  Activity codes are followed by a text description. 
+					This data frame is obtained by merging the 'all_train' and
+					'all_test' data frames which have common column names but unique
+					“id” values.</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>all_subact_MeanValues</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>Gives the mean (average) value for all variables for each
+					unique set of subject and activity.  180 rows x 87 columns.  The
+					column names for the data are the names of the original data
+					though the values are the mean for the corresponding variables.</P>
+				</TD>
+			</TR>
+		</TABLE>
+	</DL>
+</DL>
+<P><BR><BR>
+</P>
+<P>	Steps 1 and 2</P>
+<DL>
+	<DL>
+		<DD>
+		<TABLE WIDTH=655 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+			<COL WIDTH=266>
+			<COL WIDTH=372>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>data_subject_train</P>
+					<P>data_y_train</P>
+					<P>data_X_train</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>These data frames are created from the data files.  An index
+					is added, as “id”, sequenced 1 : 7352 (the number of rows in
+					the data set)</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>data_subject_test</P>
+					<P>data_y_test</P>
+					<P>data_X_test</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>These data frames are created from the data files.  An index
+					is added, as “id”, sequenced 7353 : 10299 (starting 1 above
+					the “id” for the 'train' data sets; to the number of rows in
+					both 'train' and 'test' data sets).  Having unique “id”
+					values allows the combined data sets to be merged for the final
+					results.</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>all_train</P>
+					<P>all_test</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>The data sets 'subject', 'y' and 'X' are merged to form
+					combined data sets.  Data alignment is maintained by common “id”
+					values.</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>select_Data</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>This numeric vector is obtained manually from the
+					'features.txt' file noting the variables that are 'mean' or
+					'std' values.  Length: 85</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>data_feature_names</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>This data set is created from the 'features.txt' file. 
+					Column names are added.  It is assumed to be aligned with the
+					columns of the data tables, 'data_X_train' and 'data_X_test'.</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>numTrainRec</P>
+					<P>numTestRec 
+					</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>These constant numeric variables hold the number of rows in
+					the 'train' and 'test' data sets respectively.  They are used to
+					set the sequence limits for the “id” values.</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>select_X_train</P>
+					<P>select_X_test</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>These data frames are created from 'data_X_train' and
+					'data_X_test' including only the columns given in the
+					select_Data vector.</P>
+				</TD>
+			</TR>
+		</TABLE>
+	</DL>
+</DL>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">	Step 3</P>
+<DL>
+	<DL>
+		<DD>
+		<TABLE WIDTH=655 BORDER=1 BORDERCOLOR="#000000" CELLPADDING=4 CELLSPACING=0>
+			<COL WIDTH=266>
+			<COL WIDTH=372>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>subact_data</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>Used in loops to hold specific subject/activity data.</P>
+				</TD>
+			</TR>
+			<TR VALIGN=TOP>
+				<TD WIDTH=266>
+					<P>subact_Analysis</P>
+				</TD>
+				<TD WIDTH=372>
+					<P>Used in loops to hold mean values for each variable.</P>
+				</TD>
+			</TR>
+		</TABLE>
+	</DL>
+</DL>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+</BODY>
+</HTML>

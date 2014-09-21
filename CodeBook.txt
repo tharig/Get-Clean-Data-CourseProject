@@ -1,0 +1,87 @@
+﻿Code Book
+
+for 'Getting and Cleaning Data', fall 2014, course project
+
+The project requirements are found at (registration required): 
+https://class.coursera.org/getdata-007/human_grading/view/courses/972585/assessments/3/submissions
+A copy of the most pertinent points is in this file n the project working directory:
+DescriptionPage-andRubrics.txt 
+
+
+FILES (all paths are relative to the project working directory:
+
+./UCI HAR Dataset
+
+activity_labels.txt
+Relates integer activity code to text description of activity.  6 rows x 2 columns
+features_info.txt
+Dataset documentation describing features.
+features.txt
+A listing of feature names corresponding to columns in the 'X_train.txt' and 'X_test.txt' files.  561 rows x 2 columns (index and data)
+README.txt
+Dataset documentation describing the experiment.
+
+	./UCI HAR Dataset/test
+
+subject_test.txt
+List of subjects.  Assumption: these rows align with the data rows in 'X_test.txt'.  2947 rows x 1 column
+X_test.txt
+Table of data, 2947 rows  y 561 columns
+y_test.txt
+Assumption:  These are the activity codes aligned with the subject and data tables.  2947 rows x 1 column.
+
+	./UCI HAR Dataset/train
+
+subject_train.txt
+List of subjects.  Assumption: these rows align with the data rows in 'X_train.txt'.  7352 rows x 1 column
+X_train.txt
+Table of data, 7352 rows  y 561 columns
+y_train.txt
+Assumption:  These are the activity codes aligned with the subject and data tables.  7352 rows x 1 column.
+
+	./UCI HAR Dataset/test/Inertial Signals  and
+	./UCI HAR Dataset/train/Inertial Signals
+
+These are raw data sensor inputs.  They are not needed for this analysis.
+
+
+DATASETS
+	See ReadMe.txt for information on the 'Step's used in the analysis.
+	
+	Results:
+
+all_data
+Results of analysis.  Gives the value for all data variables (features). 10299 rows x 89 columns.  Columns are named for each variable.  Activity codes are followed by a text description.  This data frame is obtained by merging the 'all_train' and 'all_test' data frames which have common column names but unique “id” values.
+all_subact_MeanValues
+Gives the mean (average) value for all variables for each unique set of subject and activity.  180 rows x 87 columns.  The column names for the data are the names of the original data though the values are the mean for the corresponding variables.
+
+	Steps 1 and 2
+data_subject_train
+data_y_train
+data_X_train
+These data frames are created from the data files.  An index is added, as “id”, sequenced 1 : 7352 (the number of rows in the data set)
+data_subject_test
+data_y_test
+data_X_test
+These data frames are created from the data files.  An index is added, as “id”, sequenced 7353 : 10299 (starting 1 above the “id” for the 'train' data sets; to the number of rows in both 'train' and 'test' data sets).  Having unique “id” values allows the combined data sets to be merged for the final results.
+all_train
+all_test
+The data sets 'subject', 'y' and 'X' are merged to form combined data sets.  Data alignment is maintained by common “id” values.
+select_Data
+This numeric vector is obtained manually from the 'features.txt' file noting the variables that are 'mean' or 'std' values.  Length: 85
+data_feature_names
+This data set is created from the 'features.txt' file.  Column names are added.  It is assumed to be aligned with the columns of the data tables, 'data_X_train' and 'data_X_test'.
+numTrainRec
+numTestRec 
+These constant numeric variables hold the number of rows in the 'train' and 'test' data sets respectively.  They are used to set the sequence limits for the “id” values.
+select_X_train
+select_X_test
+These data frames are created from 'data_X_train' and 'data_X_test' including only the columns given in the select_Data vector.
+
+	Step 3
+subact_data
+Used in loops to hold specific subject/activity data.
+subact_Analysis
+Used in loops to hold mean values for each variable.
+
+

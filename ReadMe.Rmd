@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+    <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=utf-8">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.0.1  (Unix)">
+	<META NAME="CREATED" CONTENT="20140921;14530500">
+	<META NAME="CHANGED" CONTENT="0;0">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 0.79in }
+		P { margin-bottom: 0.08in }
+		A:link { so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<P STYLE="margin-bottom: 0in">ReadMe.txt 
+</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">for 'Getting and
+Cleaning Data', fall 2014, course project</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">The project
+requirements are found at (registration required): 
+</P>
+<P STYLE="margin-left: 0.98in; margin-bottom: 0in"><A HREF="https://class.coursera.org/getdata-007/human_grading/view/courses/972585/assessments/3/submissions"><FONT SIZE=2 STYLE="font-size: 9pt">https://class.coursera.org/getdata-007/human_grading/view/courses/972585/assessments/3/submissions</FONT></A></P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">A copy of the most
+pertinent points is in this file n the project working directory:</P>
+<P STYLE="margin-left: 0.98in; margin-bottom: 0in">DescriptionPage-andRubrics.txt
+</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">The project requirements were broken
+down into the following activities (label in parenthesis references
+the step where the objective is implemented in code):</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in">Download and extract data sets
+	from zip file (Preliminary)</P>
+	<LI><P STYLE="margin-bottom: 0in">Initialize feature selection
+	vector, 'selectData'.  (Step 1a)</P>
+	<LI><P STYLE="margin-bottom: 0in">Load data sets from files;  assign
+	unique “id” value.  (Step 1b)</P>
+	<LI><P STYLE="margin-bottom: 0in">Label variables.  (Step 1c)</P>
+	<LI><P STYLE="margin-bottom: 0in">Prune data using selection vector.
+	 (Step 1d)</P>
+	<LI><P STYLE="margin-bottom: 0in">Combine parts of each group into
+	one group dataset.  (Step 2a)</P>
+	<LI><P STYLE="margin-bottom: 0in">Merge training and test Data sets
+	into one data set.  (Step 2b)</P>
+	<LI><P STYLE="margin-bottom: 0in">Label activities.  (Step 2c)</P>
+	<LI><P STYLE="margin-bottom: 0in">For each subject and activity,
+	calculate the average (mean) for all features.  (Step 3)</P>
+</UL>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">The following describes the steps taken
+to accomplish the project.</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">Preliminary</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">The files were
+downloaded and extracted outside of the analysis activity.  The R
+code used to download the file is shown below:</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><FONT SIZE=2 STYLE="font-size: 9pt">dataURL
+=
+&quot;https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip&quot;</FONT></P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><FONT SIZE=2 STYLE="font-size: 9pt">download.file(dataURL,
+destfile = &quot;./zipFile.zip&quot;, method = &quot;curl&quot;)</FONT></P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">Files were
+extracted from the zip file using the Archive.app on a Mac OsX 10.9.2</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">Step 1 part a  (The steps are
+referenced in the code to match these descriptions.)</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">A selection
+vector, 'selectData', is loaded manually with values of data columns
+that are described as 'mean' or 'std'.</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">Step 1 part b</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">Data frames are
+created from loading data from files. 
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">	A column “id”
+is added to all data frames.  The 'train' group data frames are
+assigned “id” values in the sequence 1:7352.  The 'test' group
+data frames are assigned “id” values in the sequence 7353:10299. 
+  This step prepares to combine the three sets in each group
+according to shared “id” values.  Then the combined groups can be
+merged preserving all data due to the unique “id” values between
+the groups.</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">Step 1 part c</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">The columns in the
+'data_X_train' and 'data_X_test' data frames are named using the
+values in the 'features.txt' file, loaded into the
+'data_features_names' data frame.</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">Step 1 part d</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">The 'data_X_train'
+and 'data_X_test' data frames have columns selected by the selection
+vector, 'selectData', loaded into data frames 'select_X_train' and
+'select_X_test'.</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">Step 2 part a</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">The three data
+sets in each group are merged into one.  The shared “id” values
+within the data sets of each group keep the data values aligned with
+the “subject' and 'activity' values.  As a result, the data frames
+'all_train' and 'all_test' are created.  This is accomplished with a
+double merge as shown in the example code  below:</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.98in; margin-bottom: 0in">all_train =
+merge(merge(data_subject_train, data_y_train), select_X_train)</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">Step 2 part b</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">The combined data
+sets of the two groups are merged to form one data set.  The unique
+“id” values assigned to the data sets of each group allows the
+merged set to contain all data from both groups.</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">Step 2 part c</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">The descriptions
+corresponding to the activity values are added to the 'description'
+column that was created for this in Step 1 part c.  The data set
+'<B>all_data</B>' available  at this point in the analysis is the
+first result of the project.</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in">Step 3</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">To meet the second
+result of the project, two nested loops are created.  The first loops
+through the 'subject' values 1:30.  The second loops through the
+'activity' values 1:6.  The row data is collected into the data frame
+'subact_data' for each unique pair of subject/activity and the
+colMeans() function applied to obtain the mean for each feature in
+the numeric vector 'subact_Analysis'.  
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">	As each of these
+vectors is obtained for each unique pair they are added to the data
+frame 'all_subact_MeanValues' using the rbind() function  as shown in
+the code example below:</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">all_subact_MeanValues
+&lt;- rbind.data.frame(all_subact_MeanValues, subact_Analysis)</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in">The data frame
+'<B>all_subact_MeanValues'</B> is the second result of the project.</P>
+<P STYLE="margin-left: 0.49in; margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+</BODY>
+</HTML>
